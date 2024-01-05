@@ -10,6 +10,9 @@ import {
 import logo from "../../assets/logo.png";
 import { FiMenu } from "react-icons/fi";
 import { COLORS } from "../../utils/colors";
+import { navRoutes } from "../../utils/enums";
+import { NavLink } from "react-router-dom";
+import styles from "./styles.module.css";
 
 const Navbar = () => {
   return (
@@ -41,7 +44,19 @@ const Navbar = () => {
           objectFit={"contain"}
         />
 
-        <Box display={{ md: "none", lg: "flex", base: "none" }}></Box>
+        <Box display={{ md: "none", lg: "flex", base: "none" }} gap="10">
+          {navRoutes.map((routes, idx) => (
+            <NavLink
+              key={idx}
+              to={routes.path}
+              className={({ isActive }) =>
+                isActive ? styles.nav_active : styles.nav
+              }
+            >
+              {routes.name}
+            </NavLink>
+          ))}
+        </Box>
 
         <Box
           display={{ md: "none", lg: "flex", base: "none" }}

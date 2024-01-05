@@ -37,6 +37,10 @@ const Footer = () => {
             ))}
           </Box>
         </Box>
+
+        <Text color={COLORS.white} mt="30px" textAlign="center">
+          © 2024 Astray
+        </Text>
       </Container>
     </Box>
   );

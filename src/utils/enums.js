@@ -8,3 +8,14 @@ export const footerRoutes = [
     path: "/terms",
   },
 ];
+
+export const navRoutes = [
+  {
+    name: "home",
+    path: "/",
+  },
+  {
+    name: "Events",
+    path: "/events",
+  },
+];

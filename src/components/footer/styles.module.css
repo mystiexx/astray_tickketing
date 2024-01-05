@@ -1,0 +1,18 @@
+.nav {
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.nav_active {
+  font-size: 14px;
+  color: #a227ff;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.nav:hover {
+  color: #a227ff;
+  cursor: pointer;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { EventCard } from "../../../components/card";
 import { Container, Grid, GridItem, Text, Box, Button } from "@chakra-ui/react";
 import { COLORS } from "../../../utils/colors";
+import { Link } from "react-router-dom";
 
 const Events = () => {
   return (
@@ -15,14 +16,17 @@ const Events = () => {
         <Text fontSize={30} color={COLORS.main} fontWeight={700}>
           Events
         </Text>
-        <Button
-          variant={"unstyled"}
-          _hover={{ bg: "transparent", cursor: "pointer" }}
-          alignItems="center"
-          fontSize={16}
-        >
-          More
-        </Button>
+
+        <Link to="/events">
+          <Button
+            variant={"unstyled"}
+            _hover={{ bg: "transparent", cursor: "pointer" }}
+            alignItems="center"
+            fontSize={16}
+          >
+            More
+          </Button>
+        </Link>
       </Box>
       <Grid
         templateColumns={{
@@ -30,7 +34,7 @@ const Events = () => {
           md: "repeat(4, 1fr)",
           lg: "repeat(4, 1fr",
         }}
-        gap="24px"
+        gap={{ base: "24px", md: "50px" }}
       >
         {[...new Array(8)].map((_, idx) => (
           <GridItem key={idx + 1}>

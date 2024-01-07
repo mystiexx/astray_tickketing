@@ -3,10 +3,23 @@ import { extendTheme } from "@chakra-ui/react";
 export const Theme = extendTheme({
   styles: {
     global: () => ({
-      fontFamily: `'Satoshi', sans-serif`,
+      body: {
+        fontFamily: `'Satoshi', sans-serif`,
+        // backgroundColor: "#E9EAED",
+      },
     }),
   },
   components: {
+    Input: {
+      border: "1px solid",
+      borderColor: "#D9D8DA",
+      borderRadius: "10px",
+    },
+    Select: {
+      border: "1px solid",
+      borderColor: "#D9D8DA",
+      borderRadius: "10px",
+    },
     Button: {
       baseStyle: {
         bg: "#a227ff",

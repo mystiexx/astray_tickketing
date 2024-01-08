@@ -50,6 +50,12 @@ export const Theme = extendTheme({
           fontWeight: 500,
           border: "none",
         },
+        error: {
+          bg: "#EE1717",
+          color: "#fff",
+          fontSize: "14px",
+          fontWeight: 500,
+        },
       },
     },
   },

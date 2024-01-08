@@ -33,7 +33,10 @@ const Register = () => {
     password: Yup.string()
       .required("No password provided.")
       .min(8, "Password is too short - should be 8 characters minimum.")
-      .matches(/(?=.*[0-9])/, "Password must contain a number"),
+      .matches(
+        /(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])/,
+        "Password must contain a number, an uppercase letter, and a special character",
+      ),
   });
 
   const handleSubmit = (doc) => {

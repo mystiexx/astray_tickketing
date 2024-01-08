@@ -15,6 +15,8 @@ import EventDetails from "./app/eventDetails";
 import CreateEvent from "./app/createEvent";
 import { Toaster } from "react-hot-toast";
 import ManageEvents from "./app/manageEvents";
+import AdminEventDetail from "./app/adminEventDetails";
+import Profile from "./app/profile";
 
 const App = () => {
   return (
@@ -30,6 +32,8 @@ const App = () => {
         <Route path="/events/:id" exact element={<EventDetails />} />
         <Route path="/manage/events/create" exact element={<CreateEvent />} />
         <Route path="/manage/events" exact element={<ManageEvents />} />
+        <Route path="/manage/events/:id" exact element={<AdminEventDetail />} />
+        <Route path="/profile" exact element={<Profile />} />
         <Route exact path="/home" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

@@ -9,9 +9,11 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { COLORS } from "../../../utils/colors";
+import { Link } from "react-router-dom";
+import Badge from "../../../components/badge";
 
 const EventTables = () => {
-  const head = ["event name", "tickets", "sold", ""];
+  const head = ["event name", "tickets", "sold", "status", ""];
   return (
     <TableContainer overflowX={"auto"} maxWidth={"100%"}>
       <Table>
@@ -36,12 +38,15 @@ const EventTables = () => {
               <Td fontSize="14px" textTransform={"capitalize"}>
                 200
               </Td>
+              <Td>
+                <Badge status={"draft"} />
+              </Td>
               <Td
                 fontSize="14px"
                 textTransform={"capitalize"}
                 color={COLORS.primary}
               >
-                view
+                <Link to="/manage/events/1">view</Link>
               </Td>
             </Tr>
           ))}

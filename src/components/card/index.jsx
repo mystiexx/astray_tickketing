@@ -74,3 +74,21 @@ export const CreateEventCard = ({ title, children, show, btn, btnTitle }) => {
     </Box>
   );
 };
+
+export const ProfileCard = ({ title, children }) => {
+  return (
+    <Box borderRadius={"10px"} border={`0.5px solid ${COLORS.gray}`}>
+      <Box
+        p="16px"
+        borderBottom={`0.5px solid ${COLORS.gray}`}
+        textTransform={"capitalize"}
+        fontWeight={600}
+        color={COLORS.main}
+        fontSize={"16px"}
+      >
+        {title}
+      </Box>
+      <Box p="16px">{children}</Box>
+    </Box>
+  );
+};

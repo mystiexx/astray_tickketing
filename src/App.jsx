@@ -17,6 +17,8 @@ import { Toaster } from "react-hot-toast";
 import ManageEvents from "./app/manageEvents";
 import AdminEventDetail from "./app/adminEventDetails";
 import Profile from "./app/profile";
+import Orders from "./app/orders";
+import Dashboard from "./app/dashboard";
 
 const App = () => {
   return (
@@ -33,6 +35,8 @@ const App = () => {
         <Route path="/manage/events/create" exact element={<CreateEvent />} />
         <Route path="/manage/events" exact element={<ManageEvents />} />
         <Route path="/manage/events/:id" exact element={<AdminEventDetail />} />
+        <Route path="/orders" exact element={<Orders />} />
+        <Route path="/dashboard" exact element={<Dashboard />} />
         <Route path="/profile" exact element={<Profile />} />
         <Route exact path="/home" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" />} />

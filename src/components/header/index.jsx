@@ -11,8 +11,9 @@ import { COLORS } from "../../utils/colors";
 import { CiSearch } from "react-icons/ci";
 import { IoMdAdd } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { CiExport } from "react-icons/ci";
 
-const Header = ({ title, show, btnTitle }) => {
+const Header = ({ title, show, btnTitle, isExport, handleExport }) => {
   return (
     <Box
       mb="30px"
@@ -64,6 +65,19 @@ const Header = ({ title, show, btnTitle }) => {
               {btnTitle}
             </Button>
           </Link>
+        )}
+
+        {isExport && (
+          <Button
+            _hover={{ bg: COLORS.dark, color: COLORS.white }}
+            textTransform={"capitalize"}
+            variant={"outline"}
+            w={{ base: "full", md: "auto" }}
+            leftIcon={<CiExport />}
+            onClick={handleExport}
+          >
+            Export
+          </Button>
         )}
       </Box>
     </Box>

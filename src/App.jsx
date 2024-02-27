@@ -19,6 +19,8 @@ import AdminEventDetail from "./app/adminEventDetails";
 import Profile from "./app/profile";
 import Orders from "./app/orders";
 import Dashboard from "./app/dashboard";
+import AuthWrapper from "./authWrapper";
+import { authRoutes } from "./authRoutes";
 
 const App = () => {
   return (
@@ -32,12 +34,11 @@ const App = () => {
         <Route path="/login" exact element={<Login />} />
         <Route path="/events" exact element={<Events />} />
         <Route path="/events/:id" exact element={<EventDetails />} />
-        <Route path="/manage/events/create" exact element={<CreateEvent />} />
-        <Route path="/manage/events" exact element={<ManageEvents />} />
-        <Route path="/manage/events/:id" exact element={<AdminEventDetail />} />
-        <Route path="/orders" exact element={<Orders />} />
-        <Route path="/dashboard" exact element={<Dashboard />} />
-        <Route path="/profile" exact element={<Profile />} />
+        <Route element={<AuthWrapper />}>
+          {authRoutes.map((auth, idx) => (
+            <Route path={auth.path} element={auth.element} key={idx} exact />
+          ))}
+        </Route>
         <Route exact path="/home" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

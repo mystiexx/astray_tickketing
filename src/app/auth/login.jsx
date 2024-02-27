@@ -16,17 +16,31 @@ import { Formik, Form } from "formik";
 import { COLORS } from "../../utils/colors";
 import { Link } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import api from "../../services/dataService";
 
 const Login = () => {
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   let initialValues = {
     email: "",
     password: "",
   };
 
-  const handleSubmit = (doc) => {
-    console.log(doc);
+  const handleSubmit = async (doc) => {
+    try {
+      setLoading(true);
+      const request = await api.post(`/user/login`, doc);
+      const res = request.data;
+      const response = res.data;
+      localStorage.setItem("astray-access-token", response.token);
+      localStorage.setItem("astray-user", response.user);
+      setLoading(false);
+      window.location.href = "/dashboard";
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   return (
@@ -95,6 +109,7 @@ const Login = () => {
                     isDisabled={!dirty}
                     type="submit"
                     mt="24px"
+                    isLoading={loading}
                   >
                     Sign In
                   </Button>

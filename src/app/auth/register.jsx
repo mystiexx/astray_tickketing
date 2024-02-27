@@ -17,15 +17,17 @@ import { COLORS } from "../../utils/colors";
 import { Link } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import * as Yup from "yup";
+import api from "../../services/dataService";
 
 const Register = () => {
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   let initialValues = {
     fullName: "",
     hostName: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     password: "",
   };
 
@@ -35,12 +37,23 @@ const Register = () => {
       .min(8, "Password is too short - should be 8 characters minimum.")
       .matches(
         /(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])/,
-        "Password must contain a number, an uppercase letter, and a special character",
+        "Password must contain a number, an uppercase letter, and a special character"
       ),
   });
 
-  const handleSubmit = (doc) => {
-    console.log(doc);
+  const handleSubmit = async (doc) => {
+    try {
+      setLoading(true);
+      const request = await api.post(`/user/register`, doc);
+      const res = request.data;
+      const response = res.data;
+      localStorage.setItem("astray-access-token", response.token);
+      setLoading(false);
+      window.location.href = "/dashboard";
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
   return (
     <Layout>
@@ -101,7 +114,7 @@ const Register = () => {
                     <Input
                       type="text"
                       placeholder="Phone"
-                      name="phone"
+                      name="phoneNumber"
                       onChange={handleChange}
                       focusBorderColor={COLORS.primary}
                     />
@@ -153,6 +166,7 @@ const Register = () => {
                     isDisabled={!dirty}
                     type="submit"
                     mt="24px"
+                    isLoading={loading}
                   >
                     Create Account
                   </Button>

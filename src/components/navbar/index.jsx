@@ -10,7 +10,7 @@ import SideModal from "../sideModal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const auth = true;
+  const auth = localStorage.getItem("astray-access-token")
   return (
     <Box
       p="16px"

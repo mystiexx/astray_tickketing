@@ -5,12 +5,7 @@ import commaNumber from "comma-number";
 
 const Summary = ({ summary }) => {
   return (
-    <Box
-      py="28px"
-      px="16px"
-      border={`0.5px solid ${COLORS.gray}`}
-      borderRadius={"10px"}
-    >
+    <Box py="28px" px="16px" bg={COLORS.bg_light} borderRadius={"10px"}>
       <Text fontSize={12}>{summary.name}</Text>
       <Text fontSize={"18px"} fontWeight={700} mt="7px">
         {commaNumber(summary.value)}

@@ -92,11 +92,7 @@ const CreateEvent = () => {
                     <Box display={"flex"} flexDir={"column"} gap="24px">
                       <Category handleChange={handleChange} />
 
-                      <Box
-                        p="16px"
-                        border={`1px solid ${COLORS.gray}`}
-                        borderRadius={"10px"}
-                      >
+                      <Box p="16px" bg={COLORS.bg_light} borderRadius={"10px"}>
                         <Button
                           type="submit"
                           _hover={{ bg: COLORS.dark }}

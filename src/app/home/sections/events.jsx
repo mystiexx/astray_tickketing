@@ -11,10 +11,14 @@ const Events = () => {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        mb="24px"
+        mb="50px"
       >
-        <Text fontSize={30} color={COLORS.main} fontWeight={700}>
-          Events
+        <Text
+          fontSize={{ base: 20, md: 40 }}
+          color={COLORS.white}
+          fontWeight={700}
+        >
+          Upcoming Events
         </Text>
 
         <Link to="/events">

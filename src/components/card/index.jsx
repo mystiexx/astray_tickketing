@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export const EventCard = () => {
   return (
     <Link to={`/events/${1}`}>
-      <Box position={"relative"}>
+      <Box position={"relative"} bg={COLORS.bg_light} borderRadius={"6px"}>
         <Box position="relative">
           <Box position="absolute" left={2} top={2}>
             <Box border="1px solid red">help</Box>
@@ -21,16 +21,17 @@ export const EventCard = () => {
         </Box>
 
         <Text
-          color={COLORS.main}
+          color={COLORS.white}
           fontSize={20}
           fontWeight={600}
           mt="5px"
           textTransform={"uppercase"}
+          p="16px"
         >
           party with the big boys
         </Text>
 
-        <Box mt="10px" display="flex" flexDir="column" gap="5px">
+        <Box display="flex" flexDir="column" gap="5px" p="16px">
           <Box display="flex" alignItems="center" gap="5px" fontSize={14}>
             <CiCalendar />
             <Text>18 Feb, 2024</Text>
@@ -51,13 +52,13 @@ export const EventCard = () => {
 
 export const CreateEventCard = ({ title, children, show, btn, btnTitle }) => {
   return (
-    <Box borderRadius={"10px"} border={`0.5px solid ${COLORS.gray}`}>
+    <Box borderRadius={"10px"} bg={COLORS.bg_light}>
       <Box
         p="16px"
-        borderBottom={`0.5px solid ${COLORS.gray}`}
+        borderBottom={`0.5px solid ${COLORS.bg}`}
         textTransform={"capitalize"}
         fontWeight={600}
-        color={COLORS.main}
+        color={COLORS.white}
         fontSize={"16px"}
         display={"flex"}
         justifyContent={"space-between"}
@@ -77,13 +78,13 @@ export const CreateEventCard = ({ title, children, show, btn, btnTitle }) => {
 
 export const ProfileCard = ({ title, children }) => {
   return (
-    <Box borderRadius={"10px"} border={`0.5px solid ${COLORS.gray}`}>
+    <Box borderRadius={"10px"} bg={COLORS.bg_light}>
       <Box
         p="16px"
-        borderBottom={`0.5px solid ${COLORS.gray}`}
+        borderBottom={`0.5px solid ${COLORS.bg}`}
         textTransform={"capitalize"}
         fontWeight={600}
-        color={COLORS.main}
+        color={COLORS.white}
         fontSize={"16px"}
       >
         {title}

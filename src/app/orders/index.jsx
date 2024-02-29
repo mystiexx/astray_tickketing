@@ -10,7 +10,7 @@ const Orders = () => {
     <AdminLayout>
       <Container maxW="container.xl" py="50px">
         <Header title={"orders"} isExport={true} />
-        <Box border={`0.5px solid ${COLORS.gray}`} borderRadius={"6px"}>
+        <Box borderRadius={"6px"}>
           <OrdersTable />
         </Box>
       </Container>

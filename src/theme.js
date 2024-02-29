@@ -5,7 +5,8 @@ export const Theme = extendTheme({
     global: () => ({
       body: {
         fontFamily: `'Satoshi', sans-serif`,
-        // backgroundColor: "#E9EAED",
+        backgroundColor: "#212121",
+        color: "#fff",
       },
     }),
   },

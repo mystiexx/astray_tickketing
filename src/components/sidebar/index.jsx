@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Center, Image } from "@chakra-ui/react";
 import { COLORS } from "../../utils/colors";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/footer.png";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import { SideBarRoutes } from "../../utils/enums";
@@ -11,7 +11,7 @@ const Sidebar = () => {
   return (
     <Box
       w={"250px"}
-      borderRight={`1px solid ${COLORS.gray}`}
+      bg={COLORS.bg_light}
       h="100vh"
       display={{ base: "none", md: "block" }}
       py="50px"

@@ -12,7 +12,7 @@ import {
 import { COLORS } from "../../../utils/colors";
 import { Country, State } from "country-state-city";
 
-const Venue = ({ handleChange, setFieldValue, setCountry }) => {
+const Venue = ({ handleChange, setCountry }) => {
   const countries = Country.getAllCountries();
   const [stateCode, setStateCode] = useState("");
   const [states, setStates] = useState([]);
@@ -42,6 +42,8 @@ const Venue = ({ handleChange, setFieldValue, setCountry }) => {
               <Select
                 focusBorderColor={COLORS.primary}
                 onChange={handleCountry}
+                border="none"
+                bg={COLORS.bg}
               >
                 <option>Select Country</option>
                 {countries.map((data) => (
@@ -59,6 +61,8 @@ const Venue = ({ handleChange, setFieldValue, setCountry }) => {
                 focusBorderColor={COLORS.primary}
                 onChange={handleChange}
                 name="state"
+                border="none"
+                bg={COLORS.bg}
               >
                 <option>Select State</option>
                 {states.map((data) => (
@@ -79,6 +83,8 @@ const Venue = ({ handleChange, setFieldValue, setCountry }) => {
             placeholder="Street Address"
             focusBorderColor={COLORS.primary}
             onChange={handleChange}
+            border={"none"}
+            bg={COLORS.bg}
           />
         </FormControl>
 
@@ -94,6 +100,8 @@ const Venue = ({ handleChange, setFieldValue, setCountry }) => {
                 name="startDate"
                 focusBorderColor={COLORS.primary}
                 onChange={handleChange}
+                border={"none"}
+                bg={COLORS.bg}
               />
             </FormControl>
           </GridItem>
@@ -105,6 +113,8 @@ const Venue = ({ handleChange, setFieldValue, setCountry }) => {
                 name="endDate"
                 focusBorderColor={COLORS.primary}
                 onChange={handleChange}
+                border="none"
+                bg={COLORS.bg}
               />
             </FormControl>
           </GridItem>

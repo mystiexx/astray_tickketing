@@ -12,7 +12,8 @@ const Events = () => {
           display="flex"
           justifyContent={"space-between"}
           alignItems={{ base: "none", md: "center" }}
-          mb="24px"
+          mb="80px"
+          gap="24px"
           flexDir={{ base: "column", md: "row" }}
         >
           <Text fontSize={24} fontWeight={700}>
@@ -29,6 +30,8 @@ const Events = () => {
               placeholder="Search"
               focusBorderColor={COLORS.primary}
               w={{ base: "100%", md: "400px" }}
+              border={"none"}
+              bg={COLORS.bg_light}
             />
           </Box>
         </Box>

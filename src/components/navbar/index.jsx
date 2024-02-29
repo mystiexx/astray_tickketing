@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Container, IconButton, Image } from "@chakra-ui/react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/footer.png";
 import { FiMenu } from "react-icons/fi";
 import { COLORS } from "../../utils/colors";
 import { navRoutes } from "../../utils/enums";
@@ -10,7 +10,7 @@ import SideModal from "../sideModal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const auth = localStorage.getItem("astray-access-token")
+  const auth = localStorage.getItem("astray-access-token");
   return (
     <Box
       p="16px"
@@ -18,7 +18,7 @@ const Navbar = () => {
       top={0}
       w="100%"
       zIndex={5}
-      background={"#FEFEFF"}
+      background={COLORS.bg}
     >
       <SideModal isOpen={isOpen} onClose={() => setIsOpen(!isOpen)}>
         <Box py="50px" display={"flex"} flexDir={"column"} gap="16px" px="16px">
@@ -36,27 +36,48 @@ const Navbar = () => {
         </Box>
 
         <Box px="16px">
-          <Link to="/manage/events/create">
-            <Button w="full" _hover={{ bg: COLORS.dark }}>
-              Create Event
-            </Button>
-          </Link>
+          {auth ? (
+            <Link to="/manage/events/create">
+              <Button w="full" _hover={{ bg: COLORS.dark }}>
+                Create Event
+              </Button>
+            </Link>
+          ) : (
+            <Box display={"flex"} flexDir={"column"} gap="24px">
+              <Link to="/login">
+                <Button _hover={{ bg: "#781DBC" }} w="full">
+                  Sign In
+                </Button>
+              </Link>
+
+              <Link to="/register">
+                <Button
+                  border="none"
+                  color={COLORS.white}
+                  bg="none"
+                  _hover={{ bg: COLORS.primary, color: "white" }}
+                  w="full"
+                >
+                  Sign Up
+                </Button>
+              </Link>
+            </Box>
+          )}
         </Box>
       </SideModal>
       <Container
         display="flex"
         justifyContent={"space-between"}
-        alignItems={"center"}
+        alignItems={{ base: "center", md: "center" }}
         maxW="container.xl"
       >
-        <IconButton
-          icon={<FiMenu color={COLORS.black} size={25} />}
-          display={{ base: "grid", md: "none" }}
-          placeItems="center"
-          _hover={{ bg: "transparent" }}
-          bg="transparent"
+        <Box
           onClick={() => setIsOpen(!isOpen)}
-        />
+          display={{ base: "block", md: "none" }}
+        >
+          <FiMenu color={COLORS.white} size={25} />
+        </Box>
+
         <Image
           src={logo}
           alt="logo"

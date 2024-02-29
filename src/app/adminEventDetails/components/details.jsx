@@ -5,7 +5,7 @@ import Badge from "../../../components/badge";
 
 const Details = () => {
   return (
-    <Box border={`0.5px solid ${COLORS.gray}`} p="16px" borderRadius={"6px"}>
+    <Box bg={COLORS.bg_light} p="16px" borderRadius={"6px"}>
       <Box mb="24px">
         <Badge status={"draft"} />
       </Box>

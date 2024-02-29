@@ -15,6 +15,8 @@ const BasicInfo = ({ handleChange }) => {
             placeholder="Event Name"
             focusBorderColor={COLORS.primary}
             onChange={handleChange}
+            bg={COLORS.bg}
+            border="none"
           />
         </FormControl>
         <FormControl isRequired>
@@ -25,6 +27,8 @@ const BasicInfo = ({ handleChange }) => {
             placeholder="Description"
             focusBorderColor={COLORS.primary}
             onChange={handleChange}
+            bg={COLORS.bg}
+            border="none"
           />
         </FormControl>
       </Box>

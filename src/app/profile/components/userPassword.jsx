@@ -85,6 +85,9 @@ const UserPassword = () => {
                   name="current_password"
                   value={values.current_password}
                   onChange={handleChange}
+                  border="none"
+                  bg={COLORS.bg}
+                  placeholder="Current Password"
                 />
               </FormControl>
               <FormControl isRequired>
@@ -96,6 +99,9 @@ const UserPassword = () => {
                     value={values.password}
                     focusBorderColor={COLORS.primary}
                     name="password"
+                    border="none"
+                    bg={COLORS.bg}
+                    placeholder="New Password"
                   />
                   <InputRightElement>
                     {show ? (
@@ -130,6 +136,9 @@ const UserPassword = () => {
                     name="confirm_password"
                     value={values.confirm_password}
                     onChange={handleChange}
+                    border={"none"}
+                    bg={COLORS.bg}
+                    placeholder="Confrim Password"
                   />
                   <InputRightElement>
                     {hide ? (

@@ -37,7 +37,7 @@ const Register = () => {
       .min(8, "Password is too short - should be 8 characters minimum.")
       .matches(
         /(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])/,
-        "Password must contain a number, an uppercase letter, and a special character"
+        "Password must contain a number, an uppercase letter, and a special character",
       ),
   });
 
@@ -58,11 +58,11 @@ const Register = () => {
   return (
     <Layout>
       <Box display="grid" placeItems="center" py="100px">
-        <Text fontSize={40} fontWeight={900} color={COLORS.primary}>
+        <Text fontSize={40} fontWeight={900} color={COLORS.white}>
           Sign Up
         </Text>
         <Text color={COLORS.secondary}>Please fill yor information below</Text>
-        <Container w={{ base: "100%", md: "500px" }} mt="24px">
+        <Container w={{ base: "100%", md: "400px" }} mt="24px">
           <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
@@ -72,7 +72,7 @@ const Register = () => {
               <Form>
                 <Box display="flex" flexDir="column" gap="16px">
                   <FormControl isRequired>
-                    <FormLabel fontSize={14} color={COLORS.main}>
+                    <FormLabel fontSize={14} color={COLORS.white}>
                       Full Name
                     </FormLabel>
                     <Input
@@ -81,10 +81,12 @@ const Register = () => {
                       name="fullName"
                       onChange={handleChange}
                       focusBorderColor={COLORS.primary}
+                      bg={COLORS.bg_light}
+                      border="none"
                     />
                   </FormControl>
                   <FormControl isRequired>
-                    <FormLabel fontSize={14} color={COLORS.main}>
+                    <FormLabel fontSize={14} color={COLORS.white}>
                       Host Name
                     </FormLabel>
                     <Input
@@ -93,10 +95,12 @@ const Register = () => {
                       name="hostName"
                       onChange={handleChange}
                       focusBorderColor={COLORS.primary}
+                      bg={COLORS.bg_light}
+                      border="none"
                     />
                   </FormControl>
                   <FormControl isRequired>
-                    <FormLabel fontSize={14} color={COLORS.main}>
+                    <FormLabel fontSize={14} color={COLORS.white}>
                       Email
                     </FormLabel>
                     <Input
@@ -105,10 +109,12 @@ const Register = () => {
                       name="email"
                       onChange={handleChange}
                       focusBorderColor={COLORS.primary}
+                      bg={COLORS.bg_light}
+                      border="none"
                     />
                   </FormControl>
                   <FormControl isRequired>
-                    <FormLabel fontSize={14} color={COLORS.main}>
+                    <FormLabel fontSize={14} color={COLORS.white}>
                       Phone
                     </FormLabel>
                     <Input
@@ -117,13 +123,15 @@ const Register = () => {
                       name="phoneNumber"
                       onChange={handleChange}
                       focusBorderColor={COLORS.primary}
+                      bg={COLORS.bg_light}
+                      border="none"
                     />
                   </FormControl>
                   <FormControl isRequired>
-                    <FormLabel fontSize={14} color={COLORS.main}>
+                    <FormLabel fontSize={14} color={COLORS.white}>
                       Password
                     </FormLabel>
-                    <Text fontSize={12} color={COLORS.secondary} mt={-2} mb={2}>
+                    <Text fontSize={10} color={COLORS.secondary} mt={-2} mb={2}>
                       Password must contain at least one uppercase and lowercase
                       letter, number and minimum of 8 characters
                     </Text>
@@ -135,6 +143,8 @@ const Register = () => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         focusBorderColor={COLORS.primary}
+                        border="none"
+                        bg={COLORS.bg_light}
                       />
                       <InputRightElement>
                         {show ? (

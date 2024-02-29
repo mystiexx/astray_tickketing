@@ -8,7 +8,13 @@ import styles from "./styles.module.css";
 
 const Footer = () => {
   return (
-    <Box mt="50px" position={"relative"} bottom={0} bg={COLORS.black} p="16px">
+    <Box
+      mt="50px"
+      position={"relative"}
+      bottom={0}
+      bg={COLORS.bg_light}
+      p="16px"
+    >
       <Container maxW="container.xl">
         <Box
           display={"flex"}

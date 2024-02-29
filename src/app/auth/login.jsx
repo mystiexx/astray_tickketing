@@ -51,17 +51,17 @@ const Login = () => {
         py="100px"
         h={{ base: "auto", md: "73vh" }}
       >
-        <Text fontSize={40} fontWeight={900} color={COLORS.primary}>
+        <Text fontSize={40} fontWeight={900} color={COLORS.white}>
           Sign In
         </Text>
         <Text color={COLORS.secondary}>Please fill yor information below</Text>
-        <Container w={{ base: "100%", md: "500px" }} mt="24px">
+        <Container w={{ base: "100%", md: "400px" }} mt="24px">
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             {({ handleChange, dirty }) => (
               <Form>
                 <Box display="flex" flexDir="column" gap="16px">
                   <FormControl isRequired>
-                    <FormLabel fontSize={14} color={COLORS.main}>
+                    <FormLabel fontSize={14} color={COLORS.white}>
                       Email
                     </FormLabel>
                     <Input
@@ -70,10 +70,12 @@ const Login = () => {
                       name="email"
                       onChange={handleChange}
                       focusBorderColor={COLORS.primary}
+                      border={"none"}
+                      bg={COLORS.bg_light}
                     />
                   </FormControl>
                   <FormControl isRequired>
-                    <FormLabel fontSize={14} color={COLORS.main}>
+                    <FormLabel fontSize={14} color={COLORS.white}>
                       Password
                     </FormLabel>
                     <InputGroup>
@@ -83,6 +85,8 @@ const Login = () => {
                         name="password"
                         onChange={handleChange}
                         focusBorderColor={COLORS.primary}
+                        bg={COLORS.bg_light}
+                        border="none"
                       />
                       <InputRightElement>
                         {show ? (

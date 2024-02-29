@@ -4,7 +4,7 @@ import { COLORS } from "../../../utils/colors";
 
 const UserProfile = () => {
   return (
-    <Box p="16px" border={`0.5px solid ${COLORS.gray}`} borderRadius={"6px"}>
+    <Box p="16px" bg={COLORS.bg_light} borderRadius={"6px"}>
       <Center>
         <Box
           w="100px"

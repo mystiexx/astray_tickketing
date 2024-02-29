@@ -1,8 +1,8 @@
 import axios from "axios";
 
-let api = null
+let api = null;
 
-const baseURL = import.meta.env.VITE_APP_ASTRAY_API
+const baseURL = import.meta.env.VITE_APP_ASTRAY_API;
 
 api = axios.create({
   baseURL: baseURL,
@@ -25,7 +25,7 @@ api.interceptors.request.use(
   },
   (error) => {
     throw error;
-  }
+  },
 );
 
 export default api;

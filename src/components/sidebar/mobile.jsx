@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { COLORS } from "../../utils/colors";
 import { FiMenu } from "react-icons/fi";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/footer.png";
 import SideModal from "../sideModal";
 import { SideBarRoutes } from "../../utils/enums";
 import { NavLink, Link } from "react-router-dom";
@@ -19,11 +19,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 const Mobile = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <Box
-      display={{ base: "block", md: "none" }}
-      p="16px"
-      borderBottom={`1px solid ${COLORS.gray}`}
-    >
+    <Box display={{ base: "block", md: "none" }} p="16px">
       <SideModal isOpen={isOpen} onClose={() => setIsOpen(!isOpen)}>
         <Box py="50px" display={"flex"} flexDir={"column"} gap="16px" px="16px">
           {SideBarRoutes.map((data, idx) => (
@@ -64,7 +60,7 @@ const Mobile = () => {
         alignItems={"center"}
       >
         <IconButton
-          icon={<FiMenu color={COLORS.black} size={25} />}
+          icon={<FiMenu color={COLORS.white} size={25} />}
           display={{ base: "grid", md: "none" }}
           placeItems="center"
           _hover={{ bg: "transparent" }}

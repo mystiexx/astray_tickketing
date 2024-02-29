@@ -17,10 +17,15 @@ const EventTables = () => {
   return (
     <TableContainer overflowX={"auto"} maxWidth={"100%"}>
       <Table>
-        <Thead bg="#F9F9F980">
+        <Thead bg={COLORS.bg_light}>
           <Tr>
             {head.map((data, idx) => (
-              <Th key={idx} textTransform={"capitalize"}>
+              <Th
+                key={idx}
+                textTransform={"capitalize"}
+                color="#fff"
+                border="none"
+              >
                 {data}
               </Th>
             ))}
@@ -28,23 +33,24 @@ const EventTables = () => {
         </Thead>
         <Tbody>
           {[...new Array(8)].map((_, idx) => (
-            <Tr key={idx}>
-              <Td fontSize="14px" textTransform={"capitalize"}>
+            <Tr key={idx} borderBottom={`1px solid ${COLORS.bg_light}`}>
+              <Td fontSize="14px" textTransform={"capitalize"} border="none">
                 spotlight concert
               </Td>
-              <Td fontSize="14px" textTransform={"capitalize"}>
+              <Td fontSize="14px" textTransform={"capitalize"} border="none">
                 500
               </Td>
-              <Td fontSize="14px" textTransform={"capitalize"}>
+              <Td fontSize="14px" textTransform={"capitalize"} border="none">
                 200
               </Td>
-              <Td>
+              <Td border="none">
                 <Badge status={"draft"} />
               </Td>
               <Td
                 fontSize="14px"
                 textTransform={"capitalize"}
                 color={COLORS.primary}
+                border="none"
               >
                 <Link to="/manage/events/1">view</Link>
               </Td>

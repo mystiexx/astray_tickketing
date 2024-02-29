@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
+import { COLORS } from "../../utils/colors";
 
 const SideModal = ({ isOpen, onClose, children }) => {
   return (
@@ -23,7 +24,7 @@ const SideModal = ({ isOpen, onClose, children }) => {
         h="100vh"
         left={isOpen ? "0" : "-100%"}
         zIndex="10"
-        bg="#fff"
+        bg={COLORS.bg_light}
         opacity={isOpen ? "100%" : "0"}
         transition="0.3s ease-in-out"
         overflowY="scroll"

@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, Center, Container, Input, Text } from "@chakra-ui/react";
 import { CiSearch } from "react-icons/ci";
+import { COLORS } from "../../../utils/colors";
 
 const Hero = () => {
   return (
@@ -30,7 +31,7 @@ const Hero = () => {
             gap="10px"
             width={{ base: "100%", md: "100%", lg: "500px" }}
             borderRadius={"6px"}
-            bg={"#F4F4F4"}
+            bg={COLORS.bg_light}
           >
             <Input
               type="text"

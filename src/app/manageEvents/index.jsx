@@ -11,7 +11,7 @@ const ManageEvents = () => {
       <Box py="50px">
         <Container maxW="container.xl">
           <Header title={"Events"} show={true} btnTitle={"create event"} />
-          <Box border={`0.5px solid ${COLORS.gray}`} borderRadius={"6px"}>
+          <Box>
             <EventTables />
           </Box>
         </Container>

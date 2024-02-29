@@ -27,7 +27,7 @@ const Header = ({ title, show, btnTitle, isExport, handleExport }) => {
         textTransform={"capitalize"}
         fontSize={"24px"}
         fontWeight={"600"}
-        color={COLORS.main}
+        color={COLORS.white}
       >
         {title}
       </Text>
@@ -44,7 +44,8 @@ const Header = ({ title, show, btnTitle, isExport, handleExport }) => {
             placeholder="Search"
             borderRadius={"10px"}
             focusBorderColor={COLORS.primary}
-            border={`1px solid ${COLORS.gray}`}
+            border="none"
+            bg={COLORS.bg_light}
             _placeholder={{
               color: COLORS.gray,
             }}

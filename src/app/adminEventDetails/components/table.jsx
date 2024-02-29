@@ -15,18 +15,18 @@ const TableCard = () => {
   const head = ["ticket", "quantity", "sold", ""];
 
   return (
-    <Box
-      border={`0.5px solid ${COLORS.gray}`}
-      p="16px"
-      borderRadius={"6px"}
-      bg={COLORS.white}
-    >
+    <Box borderRadius={"6px"} p="16px" bg={COLORS.bg_light}>
       <TableContainer overflowX={"auto"} maxWidth={"100%"}>
         <Table>
-          <Thead bg="#F9F9F980">
+          <Thead>
             <Tr>
               {head.map((data, idx) => (
-                <Th key={idx} textTransform={"capitalize"}>
+                <Th
+                  key={idx}
+                  textTransform={"capitalize"}
+                  color={"#fff"}
+                  border="none"
+                >
                   {data}
                 </Th>
               ))}
@@ -34,14 +34,14 @@ const TableCard = () => {
           </Thead>
           <Tbody>
             {[...new Array(3)].map((_, idx) => (
-              <Tr key={idx}>
-                <Td fontSize="14px" textTransform={"capitalize"}>
+              <Tr key={idx} borderBottom={`1px solid ${COLORS.bg}`}>
+                <Td fontSize="14px" textTransform={"capitalize"} border="none">
                   regular
                 </Td>
-                <Td fontSize="14px" textTransform={"capitalize"}>
+                <Td fontSize="14px" textTransform={"capitalize"} border="none">
                   500
                 </Td>
-                <Td fontSize="14px" textTransform={"capitalize"}>
+                <Td fontSize="14px" textTransform={"capitalize"} border="none">
                   200
                 </Td>
 
@@ -49,6 +49,7 @@ const TableCard = () => {
                   fontSize="14px"
                   textTransform={"capitalize"}
                   color={COLORS.primary}
+                  border="none"
                 >
                   mark as sold out
                 </Td>

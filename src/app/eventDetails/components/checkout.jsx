@@ -13,6 +13,7 @@ import commaNumber from "comma-number";
 
 const Checkout = ({ ticket, handleQuantity, total }) => {
   const [errors, setErrors] = useState("");
+
   let initialValues = {
     name: "",
     email: "",
@@ -25,13 +26,9 @@ const Checkout = ({ ticket, handleQuantity, total }) => {
         display={"flex"}
         flexDir={"column"}
         gap="24px"
-        w={{ base: "100%", md: "600px" }}
+        w={{ base: "100%", md: "400px" }}
       >
-        <Box
-          border={`0.5px solid ${COLORS.gray}`}
-          borderRadius={"10px"}
-          p="16px"
-        >
+        <Box p="16px">
           <Text fontWeight={600} fontSize={18} textTransform={"capitalize"}>
             {ticket.name}
           </Text>
@@ -49,6 +46,8 @@ const Checkout = ({ ticket, handleQuantity, total }) => {
                         name="name"
                         focusBorderColor={COLORS.primary}
                         onChange={handleChange}
+                        border="none"
+                        bg={COLORS.bg_light}
                       />
                     </FormControl>
                     <FormControl isRequired>
@@ -59,6 +58,8 @@ const Checkout = ({ ticket, handleQuantity, total }) => {
                         name="email"
                         focusBorderColor={COLORS.primary}
                         onChange={handleChange}
+                        border="none"
+                        bg={COLORS.bg_light}
                       />
                     </FormControl>
                     <FormControl isRequired>
@@ -70,6 +71,8 @@ const Checkout = ({ ticket, handleQuantity, total }) => {
                         max={10}
                         name="quantity"
                         focusBorderColor={COLORS.primary}
+                        border="none"
+                        bg={COLORS.bg_light}
                         onChange={(e) => {
                           const inputValue = parseInt(e.target.value, 10);
 
@@ -102,6 +105,8 @@ const Checkout = ({ ticket, handleQuantity, total }) => {
                         name="phone"
                         focusBorderColor={COLORS.primary}
                         onChange={handleChange}
+                        border="none"
+                        bg={COLORS.bg_light}
                       />
                     </FormControl>
 

@@ -13,4 +13,6 @@ export const COLORS = {
   success: "#CFEEE1",
   success_dark: "#10AA69",
   error_light: "#FCD1D1",
+  bg: "#212121",
+  bg_light: "#252525",
 };

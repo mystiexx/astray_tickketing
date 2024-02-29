@@ -14,6 +14,8 @@ const Category = ({ handleChange }) => {
           onChange={handleChange}
           name="category"
           textTransform={"capitalize"}
+          border={"none"}
+          bg={COLORS.bg}
         >
           <option>Select Category</option>
           {categories.map((data, idx) => (

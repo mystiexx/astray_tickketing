@@ -36,16 +36,17 @@ const AddTickets = ({ isOpen, onClose, handleTickets }) => {
     onClose();
   };
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size={{ base: "sm", md: "xl" }}>
+    <Modal isOpen={isOpen} onClose={onClose} size={{ base: "sm", md: "md" }}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent bg={COLORS.bg}>
         <ModalHeader>Add Ticket</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb="50px">
           <Box display="grid" placeItems={"center"}>
             <Box display="flex" gap="10px">
-              {typeVariable.map((data) => (
+              {typeVariable.map((data, idx) => (
                 <Box
+                  key={idx}
                   textTransform={"capitalize"}
                   bg={type === data ? COLORS.primary : "none"}
                   p="5px"
@@ -73,6 +74,8 @@ const AddTickets = ({ isOpen, onClose, handleTickets }) => {
                       placeholder="Enter Ticket Name"
                       focusBorderColor={COLORS.primary}
                       borderRadius={"10px"}
+                      bg={COLORS.bg_light}
+                      border={"none"}
                     />
                   </FormControl>
                   <Grid
@@ -89,6 +92,8 @@ const AddTickets = ({ isOpen, onClose, handleTickets }) => {
                           placeholder="Enter Quantity Name"
                           focusBorderColor={COLORS.primary}
                           borderRadius={"10px"}
+                          border={"none"}
+                          bg={COLORS.bg_light}
                         />
                       </FormControl>
                     </GridItem>
@@ -103,6 +108,8 @@ const AddTickets = ({ isOpen, onClose, handleTickets }) => {
                           focusBorderColor={COLORS.primary}
                           borderRadius={"10px"}
                           isDisabled={type === "free"}
+                          bg={COLORS.bg_light}
+                          border={"none"}
                         />
                       </FormControl>
                     </GridItem>

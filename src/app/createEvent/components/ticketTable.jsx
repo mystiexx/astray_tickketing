@@ -19,10 +19,18 @@ const TicketTable = ({ tickets, handleDelete }) => {
       <Table>
         <Thead>
           <Tr>
-            <Th textTransform={"capitalize"}>Ticket</Th>
-            <Th textTransform={"capitalize"}>Quantity</Th>
-            <Th textTransform={"capitalize"}>sold</Th>
-            <Th textTransform={"capitalize"}>Price</Th>
+            <Th color="#fff" textTransform={"capitalize"}>
+              Ticket
+            </Th>
+            <Th color="#fff" textTransform={"capitalize"}>
+              Quantity
+            </Th>
+            <Th color="#fff" textTransform={"capitalize"}>
+              sold
+            </Th>
+            <Th color="#fff" textTransform={"capitalize"}>
+              Price
+            </Th>
             <Th></Th>
           </Tr>
         </Thead>
@@ -49,7 +57,7 @@ const TicketTable = ({ tickets, handleDelete }) => {
                     _hover={{ bg: "transparent" }}
                     _active={{ bg: "transparent" }}
                   >
-                    <LuMoreVertical color={COLORS.black} />
+                    <LuMoreVertical color={COLORS.white} />
                   </MenuButton>
                   <MenuList>
                     <MenuItem color="red" onClick={() => handleDelete(ticket)}>

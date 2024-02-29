@@ -22,8 +22,8 @@ const Header = () => {
     >
       <Link to="/manage/events">
         <Box display="flex" alignItems={"center"} gap="5px">
-          <FaArrowLeftLong color={COLORS.grey} />
-          <Text color={COLORS.grey} fontSize={16} fontWeight={500}>
+          <FaArrowLeftLong color={COLORS.white} />
+          <Text color={COLORS.white} fontSize={16} fontWeight={500}>
             Back
           </Text>
         </Box>

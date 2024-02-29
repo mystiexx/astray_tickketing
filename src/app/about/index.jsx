@@ -7,13 +7,13 @@ import { ListItem, UnorderedList } from "@chakra-ui/react";
 const About = () => {
   return (
     <Layout>
-      <Box bg="#f4f4f4" h="50vh" display="grid" placeItems={"center"}>
+      <Box bg={COLORS.bg_light} h="50vh" display="grid" placeItems={"center"}>
         <Container maxW="container.xl">
-          <Text color={COLORS.primary} fontWeight={700} fontSize={40}>
+          <Text color={COLORS.white} fontWeight={700} fontSize={40}>
             Who we are
           </Text>
           <Text
-            color={COLORS.black}
+            color={COLORS.white}
             fontWeight={400}
             w={{ base: "auto", md: "700px" }}
             lineHeight={7}
@@ -30,7 +30,7 @@ const About = () => {
       <Box mt="100px" py="50px">
         <Container maxW="container.xl">
           <Text
-            color={COLORS.primary}
+            color={COLORS.white}
             fontWeight={700}
             fontSize={40}
             textTransform={"uppercase"}
@@ -38,7 +38,7 @@ const About = () => {
             Mission
           </Text>
           <Text
-            color={COLORS.black}
+            color={COLORS.white}
             fontWeight={400}
             w={{ base: "auto", md: "700px" }}
             lineHeight={7}
@@ -74,7 +74,7 @@ const About = () => {
           </Box>
 
           <Text
-            color={COLORS.black}
+            color={COLORS.white}
             fontWeight={400}
             w={{ base: "auto", md: "700px" }}
             lineHeight={7}
@@ -93,7 +93,7 @@ const About = () => {
       {/* vision */}
       <Box
         mt="100px"
-        bg="#f4f4f4"
+        bg={COLORS.bg_light}
         display="grid"
         placeItems={"center"}
         py="50px"
@@ -101,7 +101,7 @@ const About = () => {
       >
         <Container maxW="container.xl">
           <Text
-            color={COLORS.primary}
+            color={COLORS.white}
             fontWeight={700}
             fontSize={40}
             textTransform={"uppercase"}
@@ -110,7 +110,7 @@ const About = () => {
             vision
           </Text>
           <Text
-            color={COLORS.black}
+            color={COLORS.white}
             fontWeight={400}
             lineHeight={7}
             textAlign={"center"}
@@ -135,7 +135,7 @@ const About = () => {
       <Box mt="100px" py="50px">
         <Container maxW="container.xl">
           <Text
-            color={COLORS.primary}
+            color={COLORS.white}
             fontWeight={700}
             fontSize={40}
             textTransform={"uppercase"}
@@ -143,7 +143,7 @@ const About = () => {
             our story
           </Text>
           <Text
-            color={COLORS.black}
+            color={COLORS.white}
             fontWeight={400}
             w={{ base: "auto", md: "700px" }}
             lineHeight={7}
@@ -196,7 +196,7 @@ const About = () => {
             Join us on the journey:
           </Text>
           <Text
-            color={COLORS.black}
+            color={COLORS.white}
             fontWeight={400}
             w={{ base: "auto", md: "700px" }}
             lineHeight={7}
@@ -225,7 +225,7 @@ const About = () => {
           </Box>
 
           <Text
-            color={COLORS.black}
+            color={COLORS.white}
             fontWeight={400}
             w={{ base: "auto", md: "700px" }}
             lineHeight={7}

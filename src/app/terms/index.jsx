@@ -12,7 +12,7 @@ const Terms = () => {
           <Text
             textAlign="center"
             fontSize={{ base: 30, md: 40 }}
-            color={COLORS.primary}
+            color={COLORS.white}
             fontWeight={900}
             mb="16px"
           >

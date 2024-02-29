@@ -27,7 +27,13 @@ const UserInfo = () => {
             <Box display="flex" flexDir="column" gap="16px">
               <FormControl>
                 <FormLabel fontSize={12}>Full Name</FormLabel>
-                <Input type="text" value={values.fullName} disabled />
+                <Input
+                  type="text"
+                  value={values.fullName}
+                  bg={COLORS.bg}
+                  border={"none"}
+                  disabled
+                />
               </FormControl>
               <FormControl>
                 <FormLabel fontSize={12}>Host Name</FormLabel>
@@ -36,11 +42,19 @@ const UserInfo = () => {
                   value={values.hostName}
                   onChange={handleChange}
                   focusBorderColor={COLORS.primary}
+                  bg={COLORS.bg}
+                  border={"none"}
                 />
               </FormControl>
               <FormControl>
                 <FormLabel fontSize={12}>Email</FormLabel>
-                <Input type="text" value={values.email} disabled />
+                <Input
+                  type="text"
+                  value={values.email}
+                  bg={COLORS.bg}
+                  border={"none"}
+                  disabled
+                />
               </FormControl>
               <FormControl>
                 <FormLabel fontSize={12}>Phone</FormLabel>
@@ -49,10 +63,14 @@ const UserInfo = () => {
                   value={values.phone}
                   onChange={handleChange}
                   focusBorderColor={COLORS.primary}
+                  bg={COLORS.bg}
+                  border={"none"}
                 />
               </FormControl>
 
-              <Button _hover={{ bg: COLORS.dark }}>Update</Button>
+              <Button _hover={{ bg: COLORS.dark }} mt="24px">
+                Update
+              </Button>
             </Box>
           </Form>
         )}

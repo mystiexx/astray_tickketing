@@ -4,7 +4,7 @@ import { Container, Grid, GridItem, Text, Box, Button } from "@chakra-ui/react";
 import { COLORS } from "../../../utils/colors";
 import { Link } from "react-router-dom";
 
-const Events = () => {
+const Events = ({ events }) => {
   return (
     <Container maxW="container.xl">
       <Box
@@ -40,9 +40,9 @@ const Events = () => {
         }}
         gap={{ base: "24px", md: "50px" }}
       >
-        {[...new Array(8)].map((_, idx) => (
+        {events?.map((event, idx) => (
           <GridItem key={idx + 1}>
-            <EventCard />
+            <EventCard event={event} />
           </GridItem>
         ))}
       </Grid>

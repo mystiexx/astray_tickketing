@@ -37,7 +37,7 @@ const Header = () => {
         >
           Edit Event
         </Button>
-        <Menu>
+        <Menu bg={COLORS.bg_light}>
           <MenuButton
             as={Button}
             _hover={{ bg: COLORS.primary }}
@@ -46,8 +46,13 @@ const Header = () => {
           >
             Actions
           </MenuButton>
-          <MenuList>
-            <MenuItem display="flex" alignItems={"center"} gap="10px">
+          <MenuList bg={COLORS.bg_light} border={`1px solid ${COLORS.grey}`}>
+            <MenuItem
+              display="flex"
+              alignItems={"center"}
+              gap="10px"
+              bg={COLORS.bg_light}
+            >
               <BiLogoProductHunt />
               Publish Event
             </MenuItem>
@@ -56,11 +61,17 @@ const Header = () => {
               alignItems={"center"}
               gap="10px"
               color={COLORS.dark}
+              bg={COLORS.bg_light}
             >
               <TiCancel size={18} />
               Cancel Event
             </MenuItem>
-            <MenuItem display="flex" alignItems={"center"} gap="10px">
+            <MenuItem
+              display="flex"
+              alignItems={"center"}
+              gap="10px"
+              bg={COLORS.bg_light}
+            >
               <MdDeleteOutline color={COLORS.error} />
               <Text color={COLORS.error}> Delete Event</Text>
             </MenuItem>

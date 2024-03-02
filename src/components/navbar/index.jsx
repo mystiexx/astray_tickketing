@@ -7,10 +7,11 @@ import { navRoutes } from "../../utils/enums";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./styles.module.css";
 import SideModal from "../sideModal";
+import { getWithExpiry } from "../../utils/store";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const auth = localStorage.getItem("astray-access-token");
+  const auth = getWithExpiry("astray-access-token");
   return (
     <Box
       p="16px"

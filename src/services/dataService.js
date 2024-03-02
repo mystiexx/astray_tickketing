@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getWithExpiry } from "../utils/store";
 
 let api = null;
 
@@ -13,12 +14,12 @@ api = axios.create({
 
 api.interceptors.request.use(
   async (config) => {
-    const token = await localStorage.getItem("astray-access-token");
+    const token = await getWithExpiry("astray-access-token");
     if (token) {
       if (config.headers) {
-        config.headers.Authorization = `${token}`;
+        config.headers.Authorization = `Bearer ${token}`;
       } else {
-        config.headers = { Authorization: `${token}` };
+        config.headers = { Authorization: `Bearer ${token}` };
       }
     }
     return config;

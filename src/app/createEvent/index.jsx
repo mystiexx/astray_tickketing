@@ -11,13 +11,33 @@ import Images from "./components/images";
 import { AdminLayout } from "../../layout";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { FileUpload } from "../../services/fileUpload";
+import api from "../../services/dataService";
 
 const CreateEvent = () => {
   const [country, setCountry] = useState("");
   const [tickets, setTickets] = useState([]);
+  const [image, setImage] = useState({});
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const request = await api.get(`/api/event/category`);
+        const res = request.data;
+        const response = res.data;
+        setCategories(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getCategories();
+  }, []);
 
   let initialValues = {
-    eventName: "",
+    name: "",
     description: "",
     address: "",
     state: "",
@@ -25,13 +45,34 @@ const CreateEvent = () => {
     endDate: "",
   };
 
-  const handleSubmit = (doc) => {
-    let data = {
-      ...doc,
-      country: country,
-      tickets,
-    };
-    console.log(data);
+  const handleSubmit = async (doc) => {
+    try {
+      setLoading(true);
+      if (!image.name) {
+        return toast.error("Please Choose an Image!!!!");
+      }
+      if (tickets.length <= 0) {
+        return toast.error("Please add a ticket!!");
+      }
+      const imageResponse = await FileUpload(image);
+      let data = {
+        ...doc,
+        country: country,
+        tickets,
+        image: imageResponse,
+      };
+      const request = await api.post(`/api/auth/event`, data);
+      const res = request.data;
+      toast.success(`${res.message}: Event Added`);
+      setTimeout(() => {
+        window.location.href = '/manage/events'
+      }, 1000)
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.message)
+      setLoading(false);
+    }
   };
 
   const handleCountry = (doc) => {
@@ -50,6 +91,10 @@ const CreateEvent = () => {
 
   const handleDelete = (doc) => {
     setTickets((prev) => prev.filter((ticket) => ticket.name !== doc.name));
+  };
+
+  const handleImage = (e) => {
+    setImage(e.target.files[0]);
   };
 
   return (
@@ -80,7 +125,7 @@ const CreateEvent = () => {
                         setFieldValue={setFieldValue}
                         setCountry={handleCountry}
                       />
-                      <Images />
+                      <Images handleImage={handleImage} image={image} />
                       <Tickets
                         tickets={tickets}
                         handleTickets={handleTickets}
@@ -90,13 +135,17 @@ const CreateEvent = () => {
                   </Box>
                   <Box w={{ base: "auto", md: "368px" }}>
                     <Box display={"flex"} flexDir={"column"} gap="24px">
-                      <Category handleChange={handleChange} />
+                      <Category
+                        categories={categories}
+                        handleChange={handleChange}
+                      />
 
                       <Box p="16px" bg={COLORS.bg_light} borderRadius={"10px"}>
                         <Button
                           type="submit"
                           _hover={{ bg: COLORS.dark }}
                           w="full"
+                          isLoading={loading}
                         >
                           Submit
                         </Button>

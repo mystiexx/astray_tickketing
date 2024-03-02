@@ -5,7 +5,7 @@ import { COLORS } from "../../utils/colors";
 const Badge = ({ status }) => {
   return (
     <div>
-      {status === "draft" ? (
+      {status === "draft" || status === 'DRAFT' ? (
         <Box
           py="4px"
           px="7px"

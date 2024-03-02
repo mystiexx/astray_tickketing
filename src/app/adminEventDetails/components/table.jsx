@@ -11,7 +11,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-const TableCard = () => {
+const TableCard = ({ eventData }) => {
   const head = ["ticket", "quantity", "sold", ""];
 
   return (
@@ -33,16 +33,16 @@ const TableCard = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {[...new Array(3)].map((_, idx) => (
+            {eventData?.tickets?.map((event, idx) => (
               <Tr key={idx} borderBottom={`1px solid ${COLORS.bg}`}>
                 <Td fontSize="14px" textTransform={"capitalize"} border="none">
-                  regular
+                 {event.name}
                 </Td>
                 <Td fontSize="14px" textTransform={"capitalize"} border="none">
-                  500
+                  {event.quantity}
                 </Td>
                 <Td fontSize="14px" textTransform={"capitalize"} border="none">
-                  200
+                  {event.sold}
                 </Td>
 
                 <Td

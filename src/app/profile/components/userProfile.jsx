@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Center, Text } from "@chakra-ui/react";
 import { COLORS } from "../../../utils/colors";
 
-const UserProfile = () => {
+const UserProfile = ({ user }) => {
   return (
     <Box p="16px" bg={COLORS.bg_light} borderRadius={"6px"}>
       <Center>
@@ -18,14 +18,14 @@ const UserProfile = () => {
           fontSize={40}
           fontWeight={900}
         >
-          E
+          {user?.fullName?.slice(0, 1)}
         </Box>
       </Center>
-      <Text textAlign={"center"} fontWeight={700} fontSize={18} mt="16px">
-        Roland Enola
+      <Text textAlign={"center"} fontWeight={700} fontSize={18} mt="16px" textTransform={'capitalize'}>
+      {user?.fullName}
       </Text>
       <Text textAlign={"center"} color={COLORS.grey} fontSize={14}>
-        aloneroland@gmail.com
+       {user.email}
       </Text>
     </Box>
   );

@@ -2,17 +2,18 @@ import React from "react";
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import { COLORS } from "../../../utils/colors";
 import Badge from "../../../components/badge";
+import moment from "moment";
 
-const Details = () => {
+const Details = ({ event }) => {
   return (
     <Box bg={COLORS.bg_light} p="16px" borderRadius={"6px"}>
       <Box mb="24px">
-        <Badge status={"draft"} />
+        <Badge status={event?.status} />
       </Box>
       <Flex flexDir={{ base: "column", md: "row" }} gap="20px">
         <Box>
           <Image
-            src="https://img.freepik.com/premium-psd/night-club-party-event-flyer-social-media-post-template_272871-267.jpg?w=2000"
+            src={event?.image}
             objectFit={"cover"}
             borderRadius={"6px"}
             h="400px"
@@ -21,14 +22,14 @@ const Details = () => {
 
         <Box>
           <Box>
-            <Text fontWeight={600} mb="2px">
+            <Text fontWeight={600} mb="2px" textTransform={"capitalize"}>
               Event Name
             </Text>
-            <Text textTransform={"capitalize"}>Spotlight Concert</Text>
+            <Text textTransform={"capitalize"}>{event?.name}</Text>
             <Text fontWeight={600} mb="2px" mt="24px">
               Event Description
             </Text>
-            <Text>awesome amapiano concert for everyone</Text>
+            <Text>{event?.description}</Text>
           </Box>
 
           <Box
@@ -41,20 +42,20 @@ const Details = () => {
               <Text fontWeight={600} mb="2px">
                 Country
               </Text>
-              <Text textTransform={"capitalize"}>Nigeria</Text>
+              <Text textTransform={"capitalize"}>{event?.country}</Text>
             </Box>
             <Box>
               <Text fontWeight={600} mb="2px">
                 State
               </Text>
-              <Text textTransform={"capitalize"}>Bayelsa</Text>
+              <Text textTransform={"capitalize"}>{event?.state}</Text>
             </Box>
           </Box>
           <Box mt="24px">
             <Text fontWeight={600} mb="2px">
               Address
             </Text>
-            <Text textTransform={"capitalize"}>Drive thru</Text>
+            <Text textTransform={"capitalize"}>{event?.address}</Text>
           </Box>
           <Box
             display="flex"
@@ -66,13 +67,13 @@ const Details = () => {
               <Text fontWeight={600} mb="2px">
                 Event Start Date
               </Text>
-              <Text textTransform={"capitalize"}>Nigeria</Text>
+              <Text textTransform={"capitalize"}>{moment(event?.startDate).format('LL, h:mm')}</Text>
             </Box>
             <Box>
               <Text fontWeight={600} mb="2px">
                 Event End Date
               </Text>
-              <Text textTransform={"capitalize"}>Bayelsa</Text>
+              <Text textTransform={"capitalize"}>{moment(event?.endDate).format('LL, h:mm')}</Text>
             </Box>
           </Box>
         </Box>

@@ -2,9 +2,8 @@ import React from "react";
 import { CreateEventCard } from "../../../components/card";
 import { FormLabel, FormControl, Select } from "@chakra-ui/react";
 import { COLORS } from "../../../utils/colors";
-import { categories } from "../../../utils/enums";
 
-const Category = ({ handleChange }) => {
+const Category = ({ handleChange, categories }) => {
   return (
     <CreateEventCard title={"event category"}>
       <FormControl isRequired>
@@ -19,7 +18,7 @@ const Category = ({ handleChange }) => {
         >
           <option>Select Category</option>
           {categories.map((data, idx) => (
-            <option key={idx} value={data.value}>
+            <option key={idx} value={data.id}>
               {data.name}
             </option>
           ))}

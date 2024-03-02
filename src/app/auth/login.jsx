@@ -17,6 +17,7 @@ import { COLORS } from "../../utils/colors";
 import { Link } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import api from "../../services/dataService";
+import { setWithExpiry } from "../../utils/store";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -33,8 +34,8 @@ const Login = () => {
       const request = await api.post(`/user/login`, doc);
       const res = request.data;
       const response = res.data;
-      localStorage.setItem("astray-access-token", response.token);
-      localStorage.setItem("astray-user", response.user);
+      setWithExpiry("astray-access-token", response.token);
+      setWithExpiry("astray-user", response.user);
       setLoading(false);
       window.location.href = "/dashboard";
     } catch (error) {

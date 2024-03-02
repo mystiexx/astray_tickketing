@@ -12,7 +12,7 @@ import { COLORS } from "../../../utils/colors";
 import { Link } from "react-router-dom";
 import Badge from "../../../components/badge";
 
-const EventTables = () => {
+const EventTables = ({ events }) => {
   const head = ["event name", "tickets", "sold", "status", ""];
   return (
     <TableContainer overflowX={"auto"} maxWidth={"100%"}>
@@ -32,19 +32,19 @@ const EventTables = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {[...new Array(8)].map((_, idx) => (
+          {events.map((event, idx) => (
             <Tr key={idx} borderBottom={`1px solid ${COLORS.bg_light}`}>
               <Td fontSize="14px" textTransform={"capitalize"} border="none">
-                spotlight concert
+                {event.name}
               </Td>
               <Td fontSize="14px" textTransform={"capitalize"} border="none">
-                500
+              {event?.tickets?.reduce((acc, current) => acc + current.quantity, 0)}
               </Td>
               <Td fontSize="14px" textTransform={"capitalize"} border="none">
-                200
+                {event?.tickets?.reduce((acc, current) => acc + current.sold, 0)}
               </Td>
               <Td border="none">
-                <Badge status={"draft"} />
+                <Badge status={event.status} />
               </Td>
               <Td
                 fontSize="14px"
@@ -52,7 +52,7 @@ const EventTables = () => {
                 color={COLORS.primary}
                 border="none"
               >
-                <Link to="/manage/events/1">view</Link>
+                <Link to={`/manage/events/${event.id}`}>view</Link>
               </Td>
             </Tr>
           ))}

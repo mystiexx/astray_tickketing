@@ -3,8 +3,10 @@ import { AdminLayout } from "../../layout";
 import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react";
 import Summary from "./components/summary";
 import { COLORS } from "../../utils/colors";
+import { getWithExpiry } from "../../utils/store";
 
 const Dashboard = () => {
+  const user = getWithExpiry('astray-user')
   const summary = [
     {
       name: "Total Revenue",
@@ -28,7 +30,7 @@ const Dashboard = () => {
       <Container maxW="container.xl" py="50px">
         <Box mb="40px">
           <Text fontSize={25} fontWeight={700}>
-            Welcome Roland
+            Welcome {user?.fullName}
           </Text>
           <Text fontSize={12} color={COLORS.grey}>
             Here are your summaries for you

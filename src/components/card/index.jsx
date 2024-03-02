@@ -4,17 +4,15 @@ import { CiCalendar } from "react-icons/ci";
 import { COLORS } from "../../utils/colors";
 import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
-export const EventCard = () => {
+export const EventCard = ({ event }) => {
   return (
-    <Link to={`/events/${1}`}>
+    <Link to={`/events/${event.id}`}>
       <Box position={"relative"} bg={COLORS.bg_light} borderRadius={"6px"}>
         <Box position="relative">
-          <Box position="absolute" left={2} top={2}>
-            <Box border="1px solid red">help</Box>
-          </Box>
           <Image
-            src="https://img.freepik.com/premium-psd/night-club-party-event-flyer-social-media-post-template_272871-267.jpg?w=2000"
+            src={event.image}
             objectFit={"cover"}
             borderRadius={"6px"}
           />
@@ -28,20 +26,20 @@ export const EventCard = () => {
           textTransform={"uppercase"}
           p="16px"
         >
-          party with the big boys
+          {event.name}
         </Text>
 
         <Box display="flex" flexDir="column" gap="5px" p="16px">
           <Box display="flex" alignItems="center" gap="5px" fontSize={14}>
             <CiCalendar />
-            <Text>18 Feb, 2024</Text>
-            <Text>18:00</Text>
+            <Text>{moment(event.startDate).format('LL')}</Text>
+            <Text>{moment(event.startDate).format('hh:mm')}</Text>
           </Box>
 
           <Box display="flex" alignItems="center" gap="5px" fontSize={14}>
             <IoLocationOutline size={20} />
             <Text noOfLines={1}>
-              Mera Mera Lagos - Beach House, Water Corporation Drive, Lagos,
+              {event.country} {event.state} - {event.address}
             </Text>
           </Box>
         </Box>

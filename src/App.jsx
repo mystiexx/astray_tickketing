@@ -12,13 +12,7 @@ import Register from "./app/auth/register";
 import Login from "./app/auth/login";
 import Events from "./app/events";
 import EventDetails from "./app/eventDetails";
-import CreateEvent from "./app/createEvent";
 import { Toaster } from "react-hot-toast";
-import ManageEvents from "./app/manageEvents";
-import AdminEventDetail from "./app/adminEventDetails";
-import Profile from "./app/profile";
-import Orders from "./app/orders";
-import Dashboard from "./app/dashboard";
 import AuthWrapper from "./authWrapper";
 import { authRoutes } from "./authRoutes";
 

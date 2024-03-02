@@ -4,12 +4,12 @@ import { Box, Input, Button, FormLabel, FormControl } from "@chakra-ui/react";
 import { Formik, Form } from "formik";
 import { COLORS } from "../../../utils/colors";
 
-const UserInfo = () => {
+const UserInfo = ({ user }) => {
   let initialValues = {
-    hostName: "flyguy",
-    fullName: "Roland Enola",
-    email: "roland@email.com",
-    phone: "07059606487",
+    hostName: user.hostName,
+    fullName: user.fullName,
+    email: user.email,
+    phone: user.phone,
   };
 
   const handleSubmit = (doc) => {

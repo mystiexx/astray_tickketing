@@ -11,7 +11,7 @@ const BasicInfo = ({ handleChange }) => {
           <FormLabel fontSize={12}>Event Name</FormLabel>
           <Input
             type="text"
-            name="eventName"
+            name="name"
             placeholder="Event Name"
             focusBorderColor={COLORS.primary}
             onChange={handleChange}

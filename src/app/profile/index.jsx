@@ -4,8 +4,11 @@ import { Box, Container, Flex, Text } from "@chakra-ui/react";
 import UserProfile from "./components/userProfile";
 import UserInfo from "./components/userInfo";
 import UserPassword from "./components/userPassword";
+import { getWithExpiry } from "../../utils/store";
 
 const Profile = () => {
+  const user = getWithExpiry('astray-user')
+  console.log(user)
   return (
     <AdminLayout>
       <Box py="50px">
@@ -15,11 +18,11 @@ const Profile = () => {
           </Text>
           <Flex flexDir={{ base: "column-reverse", md: "row" }} gap="24px">
             <Box w="100%" display="flex" flexDir={"column"} gap="24px">
-              <UserInfo />
+              <UserInfo user={user} />
               <UserPassword />
             </Box>
             <Box w="100%">
-              <UserProfile />
+              <UserProfile user={user} />
             </Box>
           </Flex>
         </Container>

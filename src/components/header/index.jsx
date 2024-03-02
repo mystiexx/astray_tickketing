@@ -13,7 +13,15 @@ import { IoMdAdd } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { CiExport } from "react-icons/ci";
 
-const Header = ({ title, show, btnTitle, isExport, handleExport }) => {
+const Header = ({
+  title,
+  show,
+  btnTitle,
+  isExport,
+  handleExport,
+  placeholder,
+  handleSearch,
+}) => {
   return (
     <Box
       mb="30px"
@@ -41,13 +49,15 @@ const Header = ({ title, show, btnTitle, isExport, handleExport }) => {
           <Input
             type="text"
             w={{ base: "full", md: "300px" }}
-            placeholder="Search"
+            placeholder={placeholder || "Search"}
             borderRadius={"10px"}
             focusBorderColor={COLORS.primary}
+            onChange={handleSearch}
             border="none"
             bg={COLORS.bg_light}
             _placeholder={{
               color: COLORS.gray,
+              fontSize: 12,
             }}
           />
           <InputLeftElement>

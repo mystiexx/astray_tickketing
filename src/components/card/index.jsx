@@ -15,6 +15,8 @@ export const EventCard = ({ event }) => {
             src={event.image}
             objectFit={"cover"}
             borderRadius={"6px"}
+            height={'300px'}
+            w='full'
           />
         </Box>
 

@@ -110,7 +110,7 @@ const Events = () => {
                 <Box>
                   <Grid
                     templateColumns={{ base: "auto", md: "repeat(4,1fr)" }}
-                    gap={{ base: "24px", md: "50px" }}
+                    gap={{ base: "24px", md: "24px" }}
                   >
                     {events.map((event, idx) => (
                       <GridItem key={idx + 1}>

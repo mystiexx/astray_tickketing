@@ -38,7 +38,7 @@ const Events = ({ events }) => {
           md: "repeat(4, 1fr)",
           lg: "repeat(4, 1fr",
         }}
-        gap={{ base: "24px", md: "50px" }}
+        gap={{ base: "24px", md: "30px" }}
       >
         {events?.map((event, idx) => (
           <GridItem key={idx + 1}>

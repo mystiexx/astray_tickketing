@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layout";
 import { Box, Center, Container, Text } from "@chakra-ui/react";
 import { ListItem, UnorderedList, OrderedList } from "@chakra-ui/react";
 import { COLORS } from "../../utils/colors";
 
 const Terms = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const onRouteChange = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("popstate", onRouteChange);
+
+    return () => {
+      window.removeEventListener("popstate", onRouteChange);
+    };
+  }, []);
   return (
     <Layout>
       <Box py="100px">

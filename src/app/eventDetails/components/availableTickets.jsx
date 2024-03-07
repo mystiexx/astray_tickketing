@@ -3,34 +3,32 @@ import { Box, Button, Center, Grid, GridItem, Text } from "@chakra-ui/react";
 import commaNumber from "comma-number";
 import { COLORS } from "../../../utils/colors";
 
-const AvailableTickets = ({ handleSelect }) => {
-  const tickets = [
-    {
-      name: "regular",
-      price: 2000,
-    },
-    {
-      name: "vip",
-      price: 35000,
-    },
-    {
-      name: "platinum",
-      price: 10000,
-    },
-  ];
+const AvailableTickets = ({ handleSelect, tickets }) => {
   return (
     <Box mt="40px">
-      <Text textAlign={"center"} fontSize={30} fontWeight={700}>
+      <Text fontSize={20} fontWeight={700}>
         Tickets
+      </Text>
+      <Text fontSize={12} fontWeight={500}>
+        Click on the ticket you want to purchase
       </Text>
       <Grid
         templateColumns={{ base: "auto", md: "repeat(3,1fr)" }}
         gap="24px"
-        mt="30px"
+        mt="24px"
       >
-        {tickets.map((data, idx) => (
+        {tickets?.map((data, idx) => (
           <GridItem key={idx}>
-            <Box>
+            <Box
+              bg={COLORS.bg_light}
+              onClick={() => handleSelect(data)}
+              cursor={"pointer"}
+              p="4px"
+              borderRadius={"6px"}
+              _hover={{
+                bg: COLORS.primary,
+              }}
+            >
               <Text
                 textAlign={"center"}
                 fontSize={20}
@@ -40,17 +38,10 @@ const AvailableTickets = ({ handleSelect }) => {
               >
                 {data.name}
               </Text>
-              <Text textAlign={"center"} mb="16px">
-                {commaNumber(data.price)}
+              <Text textAlign={"center"} mb="16px" textTransform={"capitalize"}>
+                {data.price === 0 && "free"}
+                {data.price != 0 && `N${commaNumber(data.price)}`}
               </Text>
-              <Center>
-                <Button
-                  _hover={{ bg: COLORS.dark }}
-                  onClick={() => handleSelect(data)}
-                >
-                  Get Ticket
-                </Button>
-              </Center>
             </Box>
           </GridItem>
         ))}

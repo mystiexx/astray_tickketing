@@ -84,7 +84,14 @@ const Hero = ({ handleChange, handleSearch, results, loading, search }) => {
                 <Box display={"flex"} flexDir={"column"} gap="10px" p="16px">
                   {results.map((result) => (
                     <Link key={result.id} to={`/events/${result.id}`}>
-                      <Text textTransform={"capitalize"}>{result.name}</Text>
+                      <Text
+                        textTransform={"capitalize"}
+                        _hover={{
+                          color: COLORS.primary,
+                        }}
+                      >
+                        {result.name}
+                      </Text>
                     </Link>
                   ))}
                 </Box>

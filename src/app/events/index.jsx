@@ -47,6 +47,20 @@ const Events = () => {
     getEvents();
   }, [page, limit, search]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const onRouteChange = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("popstate", onRouteChange);
+
+    return () => {
+      window.removeEventListener("popstate", onRouteChange);
+    };
+  }, []);
+
   const handleSearch = (e) => {
     const handler = setTimeout(() => {
       setSearch(e.target.value);

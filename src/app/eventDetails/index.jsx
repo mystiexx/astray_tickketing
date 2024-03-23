@@ -77,6 +77,17 @@ const EventDetails = () => {
       }
     }
   };
+
+  const handleSubmit = (doc, onClose) => {
+    let data = {
+      ...doc,
+      event: params.id,
+      ticket: ticket,
+      total: total || 0,
+    };
+    console.log(data);
+    onClose();
+  };
   return (
     <Layout>
       {loading ? (
@@ -87,7 +98,7 @@ const EventDetails = () => {
         <>
           <Container maxW="container.xl" py="70px">
             <Box pb="24px">
-              <Link to='/events'>
+              <Link to="/events">
                 <Button
                   bg="none"
                   leftIcon={<FaArrowLeftLong />}
@@ -156,7 +167,8 @@ const EventDetails = () => {
               handleQuantity={handleQuantity}
               total={total}
               isOpen={show}
-              onClose={() => setShow(!show)}
+              close={() => setShow(!show)}
+              handleSubmit={handleSubmit}
             />
           </Container>
         </>

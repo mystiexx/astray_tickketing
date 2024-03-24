@@ -23,6 +23,9 @@ const Checkout = ({
   isOpen,
   close,
   handleSubmit,
+  getReference,
+  handleEmail,
+  handleQuantityValue,
 }) => {
   const [errors, setErrors] = useState("");
   const [email, setEmail] = useState("");
@@ -56,6 +59,8 @@ const Checkout = ({
     handleSubmit(data, close);
   };
 
+
+
   return (
     <Modal isOpen={isOpen} onClose={close} size={{ base: "xs", md: "md" }}>
       <ModalOverlay />
@@ -70,7 +75,7 @@ const Checkout = ({
                 placeholder="Enter Email"
                 name="email"
                 focusBorderColor={COLORS.primary}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmail}
                 border="none"
                 bg={COLORS.bg_light}
               />
@@ -96,7 +101,7 @@ const Checkout = ({
                       inputValue >= 1 &&
                       inputValue <= 10
                     ) {
-                      setQuantity(inputValue);
+                      handleQuantityValue(inputValue);
                       handleQuantity(e);
                       setErrors("");
                     } else {
@@ -119,8 +124,8 @@ const Checkout = ({
                 Buy
               </Button>
             ) : (
-              <Button _hover={{ bg: COLORS.dark }}>
-                <PaystackButton {...paystackConfig} />
+              <Button _hover={{ bg: COLORS.dark }} onClick={getReference}>
+                Pay
               </Button>
             )}
           </Box>

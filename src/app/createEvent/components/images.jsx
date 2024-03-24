@@ -3,11 +3,13 @@ import { CreateEventCard } from "../../../components/card";
 import { Box, Image, Input } from "@chakra-ui/react";
 import { BiImageAdd } from "react-icons/bi";
 import { COLORS } from "../../../utils/colors";
+
+
 const Images = ({ handleImage, image }) => {
   const imageRef = useRef();
 
   const handleOpen = () => {
-    imageRef.current?.click();
+    imageRef?.current?.click();
   };
   return (
     <CreateEventCard title="Event Image">

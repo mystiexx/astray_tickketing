@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Layout from "../../layout";
 import {
   Container,
@@ -17,6 +17,14 @@ import api from "../../services/dataService";
 import { COLORS } from "../../utils/colors";
 import moment from "moment";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { PaystackButton } from "react-paystack";
+
+const config = {
+  email: "",
+  amount: 0,
+  publicKey: import.meta.env.VITE_APP_PAYSTACK_TEST_KEY,
+  reference: "",
+};
 
 const EventDetails = () => {
   const [ticket, setTicket] = useState({});
@@ -25,6 +33,9 @@ const EventDetails = () => {
   const [loading, setLoading] = useState(false);
   const [details, setDetails] = useState({});
   const [show, setShow] = useState(false);
+  const [email, setEmail] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const paystackRef = useRef();
 
   useEffect(() => {
     const getEvent = async () => {
@@ -59,6 +70,14 @@ const EventDetails = () => {
     };
   }, []);
 
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleQuantityValue = (doc) => {
+    setQuantity(doc);
+  };
+
   const handleSelect = (doc) => {
     setTicket(doc);
     setTotal(doc.price);
@@ -78,16 +97,49 @@ const EventDetails = () => {
     }
   };
 
-  const handleSubmit = (doc, onClose) => {
+  const handleSubmit = () => {
     let data = {
-      ...doc,
+      email: email,
+      quantity: quantity,
       event: params.id,
       ticket: ticket,
       total: total || 0,
     };
     console.log(data);
-    onClose();
   };
+
+  
+  const getReference = async () => {
+    try {
+      let doc = {
+        email: email,
+        amount: total,
+      };
+      const request = await api.post(`/api/order/reference`, doc);
+      const res = request.data;
+      const response = res.data;
+      config.email = doc.email;
+      config.reference = response.ref;
+      config.amount = total * 100;
+      handlePaystackRef();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const componentProps = {
+    ...config,
+    text: "Pay now",
+    onSuccess: () => {
+      handleSubmit();
+    },
+    onClose: () => console.log("closed"),
+  };
+
+  const handlePaystackRef = () => {
+    paystackRef?.current?.click();
+  };
+
   return (
     <Layout>
       {loading ? (
@@ -96,6 +148,9 @@ const EventDetails = () => {
         </Box>
       ) : (
         <>
+          <Box display={"none"} ref={paystackRef}>
+            <PaystackButton {...componentProps} />
+          </Box>
           <Container maxW="container.xl" py="70px">
             <Box pb="24px">
               <Link to="/events">
@@ -169,6 +224,9 @@ const EventDetails = () => {
               isOpen={show}
               close={() => setShow(!show)}
               handleSubmit={handleSubmit}
+              getReference={getReference}
+              handleEmail={handleEmail}
+              handleQuantityValue={handleQuantityValue}
             />
           </Container>
         </>

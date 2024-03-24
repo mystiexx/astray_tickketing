@@ -36,7 +36,7 @@ const AddTickets = ({ isOpen, onClose, handleTickets }) => {
     onClose();
   };
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size={{ base: "sm", md: "md" }}>
+    <Modal isOpen={isOpen} onClose={onClose} size={{ base: "xs", md: "md" }}>
       <ModalOverlay />
       <ModalContent bg={COLORS.bg}>
         <ModalHeader>Add Ticket</ModalHeader>

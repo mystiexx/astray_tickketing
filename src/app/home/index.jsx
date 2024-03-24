@@ -32,7 +32,7 @@ const Home = () => {
         setEvents(response.events);
         setLoading(false);
       } catch (error) {
-        toast.error(error?.response?.data?.message);
+        toast.error(error?.response?.data?.message || error.message);
         setLoading(false);
       }
     };
@@ -55,7 +55,7 @@ const Home = () => {
       setSearching(false);
     } catch (error) {
       console.log(error);
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || error.message);
     }
   };
   return (

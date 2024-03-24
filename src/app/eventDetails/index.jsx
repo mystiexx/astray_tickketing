@@ -17,14 +17,8 @@ import api from "../../services/dataService";
 import { COLORS } from "../../utils/colors";
 import moment from "moment";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { PaystackButton } from "react-paystack";
-
-const config = {
-  email: "",
-  amount: 0,
-  publicKey: import.meta.env.VITE_APP_PAYSTACK_TEST_KEY,
-  reference: "",
-};
+import { PaystackConsumer } from "react-paystack";
+import toast from "react-hot-toast";
 
 const EventDetails = () => {
   const [ticket, setTicket] = useState({});
@@ -36,6 +30,8 @@ const EventDetails = () => {
   const [email, setEmail] = useState("");
   const [quantity, setQuantity] = useState("");
   const paystackRef = useRef();
+  const [creating, setCreating] = useState(false);
+  const [reference, setReference] = useState("");
 
   useEffect(() => {
     const getEvent = async () => {
@@ -97,20 +93,49 @@ const EventDetails = () => {
     }
   };
 
-  const handleSubmit = () => {
-    let data = {
-      email: email,
-      quantity: quantity,
-      event: params.id,
-      ticket: ticket,
-      total: total || 0,
-    };
-    console.log(data);
+  const handleSubmit = async () => {
+    try {
+      setCreating(true);
+      let data = {
+        email: email,
+        quantity: quantity || 1,
+        event: params.id,
+        ticket: ticket,
+        total: total || 0,
+        reference: reference,
+      };
+      const request = await api.post(`/api/order`, data);
+      const res = request.data;
+      toast.success(`${res.message}: Please check your email!!`);
+      setCreating(false);
+      setShow(!show);
+    } catch (error) {
+      console.log(error);
+      setCreating(false);
+    }
   };
 
-  
+  const onSuccess = () => {
+    handleSubmit();
+  };
+
+  const onClose = () => {
+    console.log("closed");
+  };
+
+  const config = {
+    email: email,
+    amount: total * 100,
+    publicKey: import.meta.env.VITE_APP_PAYSTACK_TEST_KEY,
+    reference: "",
+    onSuccess: onSuccess,
+    onClose: onClose,
+    text: "Pay",
+  };
+
   const getReference = async () => {
     try {
+      setCreating(true);
       let doc = {
         email: email,
         amount: total,
@@ -118,26 +143,21 @@ const EventDetails = () => {
       const request = await api.post(`/api/order/reference`, doc);
       const res = request.data;
       const response = res.data;
-      config.email = doc.email;
-      config.reference = response.ref;
-      config.amount = total * 100;
-      handlePaystackRef();
+      if (response.ref !== "") {
+        config.reference = response.ref;
+        setReference(response.ref);
+        setTimeout(() => {
+          handlePaystack();
+        }, 1000);
+      }
     } catch (error) {
       console.log(error);
+      setCreating(false);
     }
   };
 
-  const componentProps = {
-    ...config,
-    text: "Pay now",
-    onSuccess: () => {
-      handleSubmit();
-    },
-    onClose: () => console.log("closed"),
-  };
-
-  const handlePaystackRef = () => {
-    paystackRef?.current?.click();
+  const handlePaystack = () => {
+    paystackRef.current?.click();
   };
 
   return (
@@ -148,9 +168,17 @@ const EventDetails = () => {
         </Box>
       ) : (
         <>
-          <Box display={"none"} ref={paystackRef}>
-            <PaystackButton {...componentProps} />
-          </Box>
+          <PaystackConsumer {...config}>
+            {({ initializePayment }) => (
+              <Button
+                onClick={() => initializePayment(onSuccess, onClose)}
+                ref={paystackRef}
+                display={"none"}
+              >
+                help
+              </Button>
+            )}
+          </PaystackConsumer>
           <Container maxW="container.xl" py="70px">
             <Box pb="24px">
               <Link to="/events">
@@ -227,6 +255,7 @@ const EventDetails = () => {
               getReference={getReference}
               handleEmail={handleEmail}
               handleQuantityValue={handleQuantityValue}
+              creating={creating}
             />
           </Container>
         </>

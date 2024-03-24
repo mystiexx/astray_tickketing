@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { COLORS } from "../../../utils/colors";
 import commaNumber from "comma-number";
-import { PaystackButton } from "react-paystack";
 
 const Checkout = ({
   ticket,
@@ -26,40 +25,9 @@ const Checkout = ({
   getReference,
   handleEmail,
   handleQuantityValue,
+  creating,
 }) => {
   const [errors, setErrors] = useState("");
-  const [email, setEmail] = useState("");
-  const [quantity, setQuantity] = useState(0);
-
-  const paystackConfig = {
-    email: email,
-    amount: total * 100,
-    publicKey: import.meta.env.VITE_APP_PAYSTACK_TEST_KEY,
-    text: `Pay Now ${commaNumber(total)}`,
-    onSuccess: (reference) => {
-      onSubmit(reference);
-    },
-    onClose: () => console.log("closed"),
-  };
-
-  const onSubmit = (reference) => {
-    let data = {
-      email: email,
-      quantity: quantity,
-      reference: reference?.reference,
-    };
-    handleSubmit(data, close);
-  };
-
-  const freeSubmit = () => {
-    let data = {
-      email: email,
-      quantity: 1,
-    };
-    handleSubmit(data, close);
-  };
-
-
 
   return (
     <Modal isOpen={isOpen} onClose={close} size={{ base: "xs", md: "md" }}>
@@ -120,12 +88,16 @@ const Checkout = ({
             )}
 
             {ticket.price === 0 ? (
-              <Button _hover={{ bg: COLORS.dark }} onClick={freeSubmit}>
+              <Button _hover={{ bg: COLORS.dark }} onClick={handleSubmit}>
                 Buy
               </Button>
             ) : (
-              <Button _hover={{ bg: COLORS.dark }} onClick={getReference}>
-                Pay
+              <Button
+                _hover={{ bg: COLORS.dark }}
+                onClick={getReference}
+                isLoading={creating}
+              >
+                Pay {commaNumber(total)}
               </Button>
             )}
           </Box>

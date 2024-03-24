@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import api from "../../services/dataService";
 import { setWithExpiry } from "../../utils/store";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -40,6 +41,7 @@ const Login = () => {
       window.location.href = "/dashboard";
     } catch (error) {
       setLoading(false);
+      toast.error(error.message)
       console.log(error);
     }
   };
